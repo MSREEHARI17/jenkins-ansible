@@ -9,11 +9,11 @@ pipeline {
     environment {
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
-        NEXUS_URL = "34.232.105.51:8081"
+        NEXUS_URL = "44.201.41.76:8081"
         NEXUS_REPOSITORY = "Demo"
 	NEXUS_REPO_ID    = "Demo"
         NEXUS_LOGIN = "nexuslogin"
-	NEXUSIP   = "34.232.105.51"
+	NEXUSIP   = "44.201.41.76"
 	NEXUSPORT = "8081"
         NEXUS_USER = "admin"
 	NEXUS_PASS = "Password"
