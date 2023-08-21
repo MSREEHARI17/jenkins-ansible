@@ -101,11 +101,11 @@ pipeline {
                 credentialsId    : 'applogin',
                 disableHostKeyChecking: true,
                 extravars         : [
-                    USER: "admin"
-                    PASS: "Password"
-                    nexusip: "34.232.105.51"
-                    reponame: "Demo"
-                    groupid : "QA"
+                    USER: "admin",
+                    PASS: "Password",
+                    nexusip: "34.232.105.51",
+                    reponame: "Demo",
+                    groupid : "QA",
                     time    : "${env.BUILD_TIMESTAMP}",
                     build: "${env.BUILD_ID}",
                     artifactid: "Demo",
