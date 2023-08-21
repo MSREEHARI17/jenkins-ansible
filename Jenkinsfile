@@ -11,8 +11,12 @@ pipeline {
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "34.232.105.51:8081"
         NEXUS_REPOSITORY = "Demo"
-	    NEXUS_REPO_ID    = "Demo"
-        NEXUS_CREDENTIAL_ID = "nexuslogin"
+	NEXUS_REPO_ID    = "Demo"
+        NEXUS_LOGIN = "nexuslogin"
+	NEXUS_IP   = "34.232.105.51"
+	NEXUS_PORT = "8081"
+        NEXUS_USER = "admin"
+	NEXUS_PASS = "Password"
         ARTVERSION = "${env.BUILD_ID}"
     }
 	
@@ -55,41 +59,24 @@ pipeline {
 
         
 
-        stage("Publish to Nexus Repository Manager") {
-            steps {
-                script {
-                    pom = readMavenPom file: "pom.xml";
-                    filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
-                    echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory} ${filesByGlob[0].length} ${filesByGlob[0].lastModified}"
-                    artifactPath = filesByGlob[0].path;
-                    artifactExists = fileExists artifactPath;
-                    if(artifactExists) {
-                        echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version} ARTVERSION";
-                        nexusArtifactUploader(
-                            nexusVersion: NEXUS_VERSION,
-                            protocol: NEXUS_PROTOCOL,
-                            nexusUrl: NEXUS_URL,
-                            groupId: pom.groupId,
-                            version: ARTVERSION,
-                            repository: NEXUS_REPOSITORY,
-                            credentialsId: NEXUS_CREDENTIAL_ID,
-                            artifacts: [
-                                [artifactId: pom.artifactId,
-                                classifier: '',
-                                file: artifactPath,
-                                type: pom.packaging],
-                                [artifactId: pom.artifactId,
-                                classifier: '',
-                                file: "pom.xml",
-                                type: "pom"]
-                            ]
-                        );
-                    } 
-		    else {
-                        error "*** File: ${artifactPath}, could not be found";
-                    }
-                }
-            }
+         stage("Publish to Nexus Repository Manager") {
+           steps{
+            nexusArtifactUploader(
+                nexusVersion: 'nexus3',
+                protocol: 'http',
+                nexusURl: "${NEXUSIP}:${NEXUSPORT}",
+                groupId: 'QA',
+                version: "${env.BUILD_ID}-${env.BUILD_TIMESTAMP}",
+                repository: "${RELEASE_REPO}",
+                credentialsId: "${NEXUS_LOGIN}",
+                artifacts: [
+                    [artifactId: 'Demo',
+                     classifier: '',
+                     file: 'target/vprofile-v2.war',
+                     type: 'war']
+                ]
+            )
+           }
         }
         stage('Ansible Deploy to staging'){
             steps{
