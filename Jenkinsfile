@@ -66,11 +66,12 @@ pipeline {
                 nexusVersion: 'nexus3',
                 protocol: 'http',
                 nexusUrl: "${NEXUSIP}:${NEXUSPORT}",
+	        groupId: 'com.visualpathit',
                 version: "${env.BUILD_ID}-${env.BUILD_TIMESTAMP}",
                 repository: "${RELEASE_REPO}",
                 credentialsId: "${NEXUS_LOGIN}",
                 artifacts: [
-                    [artifactId: 'Demo',
+                    [artifactId: 'vprofile',
                      classifier: '',
                      file: 'target/vprofile-v2.war',
                      type: 'war']
@@ -94,8 +95,8 @@ pipeline {
                     reponame: "Demo",
                     time    : "${env.BUILD_TIMESTAMP}",
                     build: "${env.BUILD_ID}",
-                    artifactid: "Demo",
-                    Demo: "Demo-${env.BUILD_ID}-${env.BUILD_TIMESTAMP}.war"
+                    artifactid: "vprofile",
+                    Demo: "vprofile-${env.BUILD_ID}-${env.BUILD_TIMESTAMP}.war"
 
 
                 ]
