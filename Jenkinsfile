@@ -18,6 +18,7 @@ pipeline {
         NEXUS_USER = "admin"
 	NEXUS_PASS = "Password"
         ARTVERSION = "${env.BUILD_ID}"
+        RELEASE_REPO = "Demo"
     }
 	
     stages{
