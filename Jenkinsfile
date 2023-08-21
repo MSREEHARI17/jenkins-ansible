@@ -102,7 +102,7 @@ pipeline {
                 disableHostKeyChecking: true,
                 extravars         : [
                     USER: "admin"
-                    Pass: "Password"
+                    PASS: "Password"
                     nexusip: "34.232.105.51"
                     reponame: "Demo"
                     groupid : "QA"
