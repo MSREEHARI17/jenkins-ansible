@@ -5,7 +5,7 @@ pipeline {
 	tools {
         maven "maven3"
     }
-	
+
     environment {
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
@@ -23,6 +23,7 @@ pipeline {
 		 sh "mvn clean package"
         
         }
+	}
 
         
 
