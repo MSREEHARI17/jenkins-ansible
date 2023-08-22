@@ -57,7 +57,13 @@ pipeline {
                 }
             }
         }
-
+	    
+        stage("Publish to Nexus Repository Manager") {
+           steps{
+		   sh '''
+                      ls
+		      cd target
+	           '''
         
 
          stage("Publish to Nexus Repository Manager") {
