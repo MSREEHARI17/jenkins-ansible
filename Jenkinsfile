@@ -66,6 +66,7 @@ pipeline {
                 nexusVersion: 'nexus3',
                 protocol: 'http',
                 nexusUrl: "${NEXUSIP}:${NEXUSPORT}",
+                groupId: "",
                 version: "${env.BUILD_ID}-${env.BUILD_TIMESTAMP}",
                 repository: "${RELEASE_REPO}",
                 credentialsId: "${NEXUS_LOGIN}",
@@ -90,7 +91,7 @@ pipeline {
                 extraVars: [
                     USER: "admin",
                     PASS: "Password",
-                    nexusip: "34.232.105.51",
+                    nexusip: "3.239.33.89",
                     reponame: "Demo",
                     time    : "${env.BUILD_TIMESTAMP}",
                     build: "${env.BUILD_ID}",
