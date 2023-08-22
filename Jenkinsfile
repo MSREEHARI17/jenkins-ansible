@@ -66,7 +66,7 @@ pipeline {
                 nexusVersion: 'nexus3',
                 protocol: 'http',
                 nexusUrl: "${NEXUSIP}:${NEXUSPORT}",
-                groupId: "",
+                groupId: "com.visualpathit",
                 version: "${env.BUILD_ID}-${env.BUILD_TIMESTAMP}",
                 repository: "${RELEASE_REPO}",
                 credentialsId: "${NEXUS_LOGIN}",
