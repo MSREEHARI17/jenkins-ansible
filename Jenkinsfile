@@ -9,16 +9,16 @@ pipeline {
     environment {
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
-        NEXUS_URL = "3.239.33.89:8081"
+        NEXUS_URL = "44.199.217.199:8081"
         NEXUS_REPOSITORY = "Demo"
 	NEXUS_REPO_ID    = "Demo"
         NEXUS_LOGIN = credentials('nexuslogin')
-	NEXUSIP   = "3.239.33.89"
+	NEXUSIP   = "44.199.217.199"
 	NEXUSPORT = "8081"
         NEXUS_USER = "admin"
 	NEXUS_PASS = "Password"
         ARTVERSION = "${env.BUILD_ID}"
-        RELEASE_REPO = "Demo"
+        RELEASE_REPO = "Maven-Demo"
     }
 	
     stages{
@@ -99,7 +99,7 @@ pipeline {
                 extraVars: [
                     USER: "admin",
                     PASS: "Password",
-                    nexusip: "3.239.33.89",
+                    nexusip: "44.199.217.199",
                     reponame: "Demo",
                     time    : "${env.BUILD_TIMESTAMP}",
                     build: "${env.BUILD_ID}",
