@@ -9,11 +9,11 @@ pipeline {
     environment {
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
-        NEXUS_URL = "44.201.41.76:8081"
+        NEXUS_URL = "3.239.33.89:8081"
         NEXUS_REPOSITORY = "Demo"
 	NEXUS_REPO_ID    = "Demo"
-        NEXUS_LOGIN = "nexuslogin"
-	NEXUSIP   = "44.201.41.76"
+        NEXUS_LOGIN = credentials('nexuslogin')
+	NEXUSIP   = "3.239.33.89"
 	NEXUSPORT = "8081"
         NEXUS_USER = "admin"
 	NEXUS_PASS = "Password"
@@ -66,7 +66,6 @@ pipeline {
                 nexusVersion: 'nexus3',
                 protocol: 'http',
                 nexusUrl: "${NEXUSIP}:${NEXUSPORT}",
-	        groupId: 'com.visualpathit',
                 version: "${env.BUILD_ID}-${env.BUILD_TIMESTAMP}",
                 repository: "${RELEASE_REPO}",
                 credentialsId: "${NEXUS_LOGIN}",
