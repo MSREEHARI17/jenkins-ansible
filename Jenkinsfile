@@ -63,6 +63,7 @@ pipeline {
 		   sh '''
                       ls
 		      cd target
+	              ls
 	           '''
 	   }
 	}
