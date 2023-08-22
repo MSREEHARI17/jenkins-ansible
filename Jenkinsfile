@@ -64,6 +64,8 @@ pipeline {
                       ls
 		      cd target
 	           '''
+	   }
+	}
         
 
          stage("Publish to Nexus Repository Manager") {
