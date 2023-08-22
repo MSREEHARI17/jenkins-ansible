@@ -58,7 +58,7 @@ pipeline {
             }
         }
 	    
-        stage("Publish to Nexus Repository Manager") {
+        stage("list") {
            steps{
 		   sh '''
                       ls
